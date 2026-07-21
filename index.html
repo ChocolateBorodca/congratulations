@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>congratulations</title>
+    <!-- Подключаем плотный и вытянутый шрифт без округлений -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: sans-serif;
             -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Общие текстовые стили в стиле референса */
+        body, button, a {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         body {
@@ -23,6 +34,21 @@
             justify-content: flex-start;
             padding: 40px 20px;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Эффект пленочного шума на весь фон */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            opacity: 0.08; /* Интенсивность шума */
+            pointer-events: none;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://w3.org id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         /* Контейнер для нового графического логотипа */
@@ -34,12 +60,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            z-index: 10;
         }
 
         /* Стили для адаптивного логотипа-картинки */
         .main-logo-img {
             width: 100%;
-            max-width: 750px; /* Оптимальная ширина для десктопа */
+            max-width: 750px;
             height: auto;
             display: block;
             object-fit: contain;
@@ -53,6 +80,7 @@
             width: 100%;
             max-width: 1100px;
             padding: 10px 0;
+            z-index: 10;
         }
 
         /* Обертка изображения hoodie без закруглений */
@@ -93,11 +121,11 @@
         }
 
         .price-tag {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 900;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
             color: #ffffff;
-            text-transform: uppercase;
             margin-bottom: 30px;
+            line-height: 1;
         }
 
         /* Спецификации в черно-белом стиле */
@@ -114,19 +142,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            font-size: 1.1rem;
         }
 
         .spec-label {
             color: #888888;
-            font-weight: 700;
         }
 
         .spec-value {
             color: #ffffff;
-            font-weight: 900;
             text-align: right;
         }
 
@@ -140,11 +164,9 @@
             background-color: #ffffff;
             border: 1px solid #ffffff;
             color: #000000;
-            font-size: 1rem;
-            font-weight: 900;
-            text-transform: uppercase;
+            font-size: 1.2rem;
+            font-weight: 700;
             text-decoration: none;
-            letter-spacing: 1px;
             transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
         }
 
@@ -187,7 +209,7 @@
 </head>
 <body>
 
-    <!-- Контейнер, куда вместо текста теперь загружается ваш логотип -->
+    <!-- Контейнер для вашего графического логотипа -->
     <div class="header-container">
         <img class="main-logo-img" src="images/logo.png" alt="congratulations logo">
     </div>
@@ -222,7 +244,7 @@
             </div>
 
             <!-- Прямая рабочая ссылка на ваш Telegram-аккаунт -->
-            <a href="https://t.me" target="_blank" class="telegram-btn">
+            <a href="https://t.me/chocolateborodca" target="_blank" class="telegram-btn">
                 Забрать в Telegram →
             </a>
         </div>
