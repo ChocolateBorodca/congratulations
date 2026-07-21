@@ -25,20 +25,24 @@
             overflow-x: hidden;
         }
 
-        /* Главный контейнер-заголовок по центру над фото */
+        /* Контейнер для нового графического логотипа */
         .header-container {
             width: 100%;
             max-width: 1100px;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .main-title {
-            font-size: clamp(2.5rem, 7vw, 6rem);
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #ffffff;
+        /* Стили для адаптивного логотипа-картинки */
+        .main-logo-img {
+            width: 100%;
+            max-width: 750px; /* Оптимальная ширина для десктопа */
+            height: auto;
+            display: block;
+            object-fit: contain;
         }
 
         /* Контейнер контента без стеклянного фона и без закруглений */
@@ -163,6 +167,10 @@
             body {
                 padding: 20px 15px;
             }
+            .header-container {
+                margin-bottom: 15px;
+                padding: 0 10px;
+            }
             .product-container {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -179,9 +187,9 @@
 </head>
 <body>
 
-    <!-- Заголовок congratulations строго по центру и белый -->
+    <!-- Контейнер, куда вместо текста теперь загружается ваш логотип -->
     <div class="header-container">
-        <h1 class="main-title">congratulations</h1>
+        <img class="main-logo-img" src="images/logo.png" alt="congratulations logo">
     </div>
 
     <!-- Основной контейнер контента -->
@@ -214,7 +222,7 @@
             </div>
 
             <!-- Прямая рабочая ссылка на ваш Telegram-аккаунт -->
-            <a href="https://t.me/chocolateborodca" target="_blank" class="telegram-btn">
+            <a href="https://t.me" target="_blank" class="telegram-btn">
                 Забрать в Telegram →
             </a>
         </div>
