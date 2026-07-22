@@ -8,10 +8,10 @@
 }
 
 body {
-    background-color: #0d0d0d;
+    background-color: #000000; /* Цвет изменен на чисто черный */
     color: #ffffff;
     display: flex;
-    flex-direction: column; /* Изменяем направление, чтобы шапка была сверху */
+    flex-direction: column; 
     justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
@@ -31,10 +31,10 @@ body {
 /* Настройки отображения картинки-логотипа */
 .brand-logo-img {
     height: auto;
-    max-width: 350px; /* Ограничиваем ширину логотипа, чтобы он не был гигантским */
+    max-width: 350px; 
     width: 100%;
     display: block;
-    filter: brightness(95%) contrast(110%); /* Слегка подкручиваем контраст */
+    filter: brightness(100%) contrast(110%);
 }
 
 /* Главный контейнер */
@@ -53,13 +53,13 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Расстояние между фото и стрелочками */
+    gap: 15px; 
 }
 
 .image-hover-wrapper {
     position: relative;
     width: 100%;
-    border: 1px solid #333; /* Тонкая рамка вокруг фото */
+    border: 1px solid #333; 
     overflow: hidden;
     filter: contrast(120%) grayscale(30%);
     transition: filter 0.3s ease;
@@ -69,11 +69,11 @@ body {
 .product-img {
     width: 100%;
     height: auto;
-    display: none; /* Скрываем все фото по умолчанию */
+    display: none; 
 }
 
 .product-img.active {
-    display: block; /* Показываем только активное фото */
+    display: block; 
 }
 
 /* Эффект НАВЕДЕНИЯ МЫШКИ: чистый негатив */
@@ -85,7 +85,7 @@ body {
 .slider-controls {
     display: flex;
     gap: 30px;
-    justify-content: center; /* Выравнивание по центру */
+    justify-content: center; 
 }
 
 .arrow-btn {
@@ -118,10 +118,10 @@ body {
 }
 
 .product-title {
-    font-family: 'Impact', 'Arial Black', sans-serif; /* Вытянутый плотный шрифт */
-    font-size: 64px; /* Делаем его огромным */
+    font-family: 'Impact', 'Arial Black', sans-serif; 
+    font-size: 64px; 
     font-weight: 900;
-    letter-spacing: -2px; /* Сдвигаем буквы ближе друг к другу, как в ОБСКУРА */
+    letter-spacing: -2px; 
     margin-top: 5px;
 }
 
@@ -189,6 +189,6 @@ body {
     }
     
     .brand-logo-img {
-        max-width: 250px; /* Чуть уменьшаем лого на телефонах */
+        max-width: 250px; 
     }
 }
