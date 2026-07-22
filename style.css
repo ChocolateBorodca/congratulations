@@ -27,29 +27,15 @@ body {
     align-items: center;
 }
 
-/* Блок с картинкой и слайдером */
+/* Блок с картинкой */
 .image-section {
-    width: 100%;
-    overflow: hidden;
-}
-
-.slider-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    border: 1px solid #333; /* Тонкая рамка вокруг фото в стиле интерфейсов */
-}
-
-.slider-track {
-    display: flex;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     width: 100%;
 }
 
 .product-img {
     width: 100%;
     height: auto;
-    flex-shrink: 0;
+    border: 1px solid #333; /* Тонкая рамка вокруг фото в стиле интерфейсов */
     /* Высокий контраст и ч/б эффект, как на референсе */
     filter: contrast(120%) grayscale(30%); 
     transition: filter 0.3s ease;
@@ -57,50 +43,6 @@ body {
 
 .product-img:hover {
     filter: contrast(140%) grayscale(0%);
-}
-
-/* Кнопки стрелок */
-.slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    border: 1px solid #333;
-    padding: 15px;
-    cursor: pointer;
-    font-size: 18px;
-    z-index: 10;
-    transition: background 0.2s, color 0.2s;
-}
-
-.slider-btn:hover {
-    background: #ffffff;
-    color: #000000;
-}
-
-.prev-btn { left: 10px; }
-.next-btn { right: 10px; }
-
-/* Точки под слайдером */
-.slider-dots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.dot {
-    width: 8px;
-    height: 8px;
-    background-color: #333;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.dot.active {
-    background-color: #ffffff;
 }
 
 /* Блок с текстом */
@@ -189,9 +131,5 @@ body {
     
     .product-title {
         font-size: 42px;
-    }
-    
-    .slider-btn {
-        display: none; /* Прячем стрелки на телефонах, там работает свайп пальцем */
     }
 }
