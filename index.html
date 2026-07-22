@@ -3,40 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Эксклюзивная Кофта | Название Бренда</title>
+    <title>BUDAPEST* 2010</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <main class="container">
-        <!-- Левая часть: Фотография кофты -->
+        <!-- Левая часть: Фотография кофты со стрелочками переключения -->
         <section class="image-section">
-            <!-- Твое реальное фото, загруженное в корень или папку images -->
-            <img src="images/houdie1.png" alt="Эксклюзивная кофта" class="product-img">
+            <div class="image-hover-wrapper">
+                <!-- Первое фото (активно по умолчанию) -->
+                <img src="images/houdie1.png" alt="BUDAPEST* 2010" class="product-img active">
+                <!-- Второе фото -->
+                <img src="images/houdie2.png" alt="BUDAPEST* 2010" class="product-img">
+            </div>
+            
+            <!-- Маленькие аккуратные стрелочки под фото для переключения -->
+            <div class="slider-controls">
+                <button class="arrow-btn" id="prevBtn">⟵</button>
+                <button class="arrow-btn" id="nextBtn">⟶</button>
+            </div>
         </section>
 
         <!-- Правая часть: Описание и кнопка покупки -->
         <section class="info-section">
             <header>
                 <span class="badge">LIMITED DROP</span>
-                <h1 class="product-title">КОФТА / НАЗВАНИЕ</h1>
-                <p class="price">1 500 UAH</p>
+                <h1 class="product-title">BUDAPEST* 2010</h1>
+                <p class="price">5 990 РУБ</p>
             </header>
 
             <div class="description">
-                <p>Уникальный оверсайз крой, разработанный с нуля. Плотный премиум-хлопок, который держит форму и приятен к телу. Авторский концепт, созданный для тех, кто ценит стиль и комфорт.</p>
-                
                 <ul class="specs">
-                    <li><strong>Состав:</strong> 80% хлопок, 20% полиэстер</li>
-                    <li><strong>Плотность:</strong> 380 г/м²</li>
-                    <li><strong>Размеры:</strong> S / M / L (Oversize)</li>
+                    <li><strong>Состав:</strong> 100% ПЛОТНЫЙ ХЛОПОК</li>
+                    <li><strong>Размеры:</strong> ONE SIZE</li>
                 </ul>
             </div>
 
             <!-- Твоя рабочая ссылка на Telegram -->
-            <a href="https://t.me/chocolateborodca" target="_blank" class="buy-button">ЗАКАЗАТЬ В TELEGRAM</a>
+            <a href="https://t.me" target="_blank" class="buy-button">ЗАКАЗАТЬ В TELEGRAM</a>
         </section>
     </main>
 
+    <!-- Скрипт переключения фото -->
+    <script>
+        const images = document.querySelectorAll('.image-hover-wrapper .product-img');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+
+        function changeImage(index) {
+            images[currentIndex].classList.remove('active');
+            currentIndex = index;
+            if (currentIndex < 0) currentIndex = images.length - 1;
+            if (currentIndex >= images.length) currentIndex = 0;
+            images[currentIndex].classList.add('active');
+        }
+
+        prevBtn.addEventListener('click', () => changeImage(currentIndex - 1));
+        nextBtn.addEventListener('click', () => changeImage(currentIndex + 1));
+    </script>
 </body>
 </html>
