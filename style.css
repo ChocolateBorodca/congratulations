@@ -27,22 +27,59 @@ body {
     align-items: center;
 }
 
-/* Блок с картинкой */
+/* Блок с контейнером для фото */
 .image-section {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Расстояние между фото и стрелочками */
 }
 
-.product-img {
+.image-hover-wrapper {
+    position: relative;
     width: 100%;
-    height: auto;
-    border: 1px solid #333; /* Тонкая рамка вокруг фото в стиле интерфейсов */
-    /* Высокий контраст и ч/б эффект, как на референсе */
-    filter: contrast(120%) grayscale(30%); 
+    border: 1px solid #333; /* Тонкая рамка вокруг фото */
+    overflow: hidden;
+    filter: contrast(120%) grayscale(30%);
     transition: filter 0.3s ease;
 }
 
-.product-img:hover {
-    filter: contrast(140%) grayscale(0%);
+/* Настройки картинок внутри слайдера */
+.product-img {
+    width: 100%;
+    height: auto;
+    display: none; /* Скрываем все фото по умолчанию */
+}
+
+.product-img.active {
+    display: block; /* Показываем только активное фото */
+}
+
+/* Эффект НАВЕДЕНИЯ МЫШКИ: чистый негатив */
+.image-hover-wrapper:hover {
+    filter: invert(100%) contrast(120%);
+}
+
+/* Маленькие брутальные стрелочки под фото */
+.slider-controls {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.arrow-btn {
+    background: transparent;
+    border: none;
+    color: #888;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.arrow-btn:hover {
+    color: #ffffff;
+    transform: scale(1.1);
 }
 
 /* Блок с текстом */
@@ -73,13 +110,6 @@ body {
     font-weight: 300;
     color: #e0e0e0;
     margin-top: 10px;
-}
-
-.description p {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    color: #aaa;
 }
 
 .specs {
