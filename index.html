@@ -9,26 +9,10 @@
 <body>
 
     <main class="container">
-        <!-- Левая часть: Слайдер с фотографиями кофты -->
+        <!-- Левая часть: Фотография кофты -->
         <section class="image-section">
-            <div class="slider-container">
-                <!-- Кнопка назад -->
-                <button class="slider-btn prev-btn">⟵</button>
-                
-                <!-- Лента с вашими картинками -->
-                <div class="slider-track">
-                    <img src="images/hoodie2.jpg" alt="Фото кофты 1" class="product-img">
-                    <!-- Сюда добавьте ваши дополнительные фото, когда загрузите их в GitHub -->
-                    <img src="images/hoodie3.jpg" alt="Фото кофты 2" class="product-img">
-                    <img src="images/hoodie4.jpg" alt="Фото кофты 3" class="product-img">
-                </div>
-                
-                <!-- Кнопка вперед -->
-                <button class="slider-btn next-btn">⟶</button>
-            </div>
-            
-            <!-- Точки снизу для навигации -->
-            <div class="slider-dots"></div>
+            <!-- Твое реальное фото, загруженное в корень или папку images -->
+            <img src="images/houdie1.png" alt="Эксклюзивная кофта" class="product-img">
         </section>
 
         <!-- Правая часть: Описание и кнопка покупки -->
@@ -49,56 +33,10 @@
                 </ul>
             </div>
 
-            <!-- ЗАМЕНИТЕ ССЫЛКУ НИЖЕ НА ВАШ ТЕЛЕГРАМ ИЛИ ИНСТАГРАМ -->
-            <a href="https://t.me" target="_blank" class="buy-button">ЗАКАЗАТЬ В TELEGRAM</a>
+            <!-- Твоя рабочая ссылка на Telegram -->
+            <a href="https://t.me/chocolateborodca" target="_blank" class="buy-button">ЗАКАЗАТЬ В TELEGRAM</a>
         </section>
     </main>
 
-    <!-- Скрипт для работы перелистывания -->
-    <script>
-        const track = document.querySelector('.slider-track');
-        const slides = Array.from(track.children);
-        const nextButton = document.querySelector('.next-btn');
-        const prevButton = document.querySelector('.prev-btn');
-        const dotsContainer = document.querySelector('.slider-dots');
-        
-        let currentIndex = 0;
-
-        // Создаем точки под слайдером динамически
-        slides.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => updateSlider(index));
-            dotsContainer.appendChild(dot);
-        });
-
-        const dots = Array.from(dotsContainer.children);
-
-        function updateSlider(index) {
-            if (index < 0) index = slides.length - 1;
-            if (index >= slides.length) index = 0;
-            
-            currentIndex = index;
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[currentIndex].classList.add('active');
-        }
-
-        nextButton.addEventListener('click', () => updateSlider(currentIndex + 1));
-        prevButton.addEventListener('click', () => updateSlider(currentIndex - 1));
-
-        // Поддержка свайпов на мобилках
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        track.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
-        track.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            if (touchStartX - touchEndX > 50) updateSlider(currentIndex + 1);
-            if (touchEndX - touchStartX > 50) updateSlider(currentIndex - 1);
-        });
-    </script>
 </body>
 </html>
