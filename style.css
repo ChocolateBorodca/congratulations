@@ -1,188 +1,197 @@
-/* Сброс стилей и брутальный шрифт */
+/* Общие настройки стиля и брутальный шрифт */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Impact', 'Arial Black', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 body {
-    background-color: #050505;
+    background-color: #0d0d0d;
     color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 40px 20px;
-    overflow-x: hidden;
-    position: relative;
+    padding: 20px;
 }
 
-/* Наложение шума (текстура старой пленки) */
-.noise-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.4)), url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://w3.org"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
-    opacity: 0.06;
-    pointer-events: none;
-    z-index: 999;
-}
-
-/* Главный контейнер */
+/* Главный контейнер (сетка из двух половин) */
 .container {
     display: grid;
-    grid-template-columns: 1.11fr 0.89fr;
-    gap: 60px;
-    max-width: 1200px;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1100px;
     width: 100%;
-    align-items: start;
+    align-items: center;
 }
 
-/* Секция с изображением */
+/* Блок с картинкой и слайдером */
 .image-section {
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider-container {
     position: relative;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #333; /* Тонкая рамка вокруг фото в стиле интерфейсов */
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     width: 100%;
 }
 
 .product-img {
     width: 100%;
     height: auto;
-    display: block;
-    border: 2px solid #1a1a1a;
+    flex-shrink: 0;
     /* Высокий контраст и ч/б эффект, как на референсе */
-    filter: contrast(130%) grayscale(20%) brightness(90%);
-    transition: filter 0.5s ease;
+    filter: contrast(120%) grayscale(30%); 
+    transition: filter 0.3s ease;
 }
 
 .product-img:hover {
-    filter: contrast(140%) grayscale(0%) brightness(100%);
+    filter: contrast(140%) grayscale(0%);
 }
 
-.status-tag {
+/* Кнопки стрелок */
+.slider-btn {
     position: absolute;
-    bottom: 15px;
-    left: 15px;
-    background-color: #ffffff;
-    color: #000000;
-    padding: 4px 10px;
-    font-size: 12px;
-    font-weight: bold;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: 1px solid #333;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+    transition: background 0.2s, color 0.2s;
 }
 
-/* Правая текстовая колонка */
+.slider-btn:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+/* Точки под слайдером */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: #333;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #ffffff;
+}
+
+/* Блок с текстом */
 .info-section {
     display: flex;
     flex-direction: column;
-    gap: 35px;
-    padding-top: 10px;
+    gap: 24px;
 }
 
-/* Заголовки */
-.brand-header {
-    border-bottom: 2px solid #1a1a1a;
-    padding-bottom: 20px;
+.badge {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #888;
 }
 
 .product-title {
-    font-size: 84px;
-    line-height: 0.85;
-    letter-spacing: -3px; /* Буквы плотно прижаты, как в ОБСКУРА */
-    color: #ffffff;
-}
-
-.sub-title {
-    font-size: 14px;
-    color: #555555;
+    font-family: 'Impact', 'Arial Black', sans-serif; /* Вытянутый плотный шрифт */
+    font-size: 64px; /* Делаем его огромным */
+    font-weight: 900;
+    letter-spacing: -2px; /* Сдвигаем буквы ближе друг к другу, как в ОБСКУРА */
     margin-top: 5px;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
 }
 
 .price {
-    font-size: 36px;
-    margin-top: 20px;
-    color: #ffffff;
-}
-
-/* Описание и характеристики */
-.description {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-.manifesto {
     font-family: Arial, sans-serif;
-    font-size: 15px;
+    font-size: 24px;
+    font-weight: 300;
+    color: #e0e0e0;
+    margin-top: 10px;
+}
+
+.description p {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
     line-height: 1.6;
-    color: #b0b0b0;
-    letter-spacing: 0;
+    color: #aaa;
 }
 
-.specs-table {
-    width: 100%;
-    border-collapse: collapse;
+.specs {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.specs li {
     font-family: Arial, sans-serif;
-    font-size: 13px;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 8px;
 }
 
-.specs-table td {
-    padding: 10px 0;
-    border-bottom: 1px dashed #1a1a1a;
+.specs strong {
+    color: #fff;
 }
 
-.specs-table td:first-child {
-    color: #555555;
-    font-weight: bold;
-}
-
-.specs-table td:last-child {
-    text-align: right;
-    color: #ffffff;
-}
-
-/* Андеграундная кнопка заказа */
+/* Кнопка заказа */
 .buy-button {
-    display: block;
-    width: 100%;
+    font-family: Arial, sans-serif;
+    display: inline-block;
     text-align: center;
     background-color: #ffffff;
     color: #000000;
     text-decoration: none;
-    padding: 22px;
-    font-size: 18px;
-    font-weight: 900;
-    border: 2px solid #ffffff;
-    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    padding: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 14px;
+    border-radius: 2px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .buy-button:hover {
-    background-color: transparent;
-    color: #ffffff;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    background-color: #e0e0e0;
 }
 
 .buy-button:active {
     transform: scale(0.98);
 }
 
-/* Адаптивность для смартфонов */
-@media (max-width: 900px) {
+/* Адаптация под мобильные экраны (телефоны) */
+@media (max-width: 768px) {
     .container {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 24px;
     }
     
     .product-title {
-        font-size: 64px;
+        font-size: 42px;
     }
     
-    body {
-        padding: 20px 10px;
+    .slider-btn {
+        display: none; /* Прячем стрелки на телефонах, там работает свайп пальцем */
     }
 }
