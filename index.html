@@ -8,84 +8,177 @@
 </head>
 <body>
 
-    <!-- Шапка сайта -->
-    <header class="site-header">
-        <img src="images/logo.png" alt="BUDAPEST BRAND LOGO" class="brand-logo-img">
-    </header>
+    <!-- КНОПКА БУРГЕР-МЕНЮ (ТРИ ЛИНИИ) -->
+    <button class="menu-toggle-btn" id="menuToggle" aria-label="Открыть меню">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
 
-    <!-- ПЕРВЫЙ БЛОК (ОСНОВНОЙ ТОВАР) -->
-    <main class="container">
-        <!-- Левая часть: Слайдер -->
-        <section class="image-section">
-            <div class="image-hover-wrapper">
-                <img src="images/houdie1.png" alt="BUDAPEST* 2010" class="product-img active">
-                <img src="images/houdie2.png" alt="BUDAPEST* 2010" class="product-img">
+    <!-- ВЫЕЗЖАЮЩАЯ ПАНЕЛЬ МЕНЮ -->
+    <nav class="side-menu" id="sideMenu">
+        <ul class="menu-list">
+            <li><a href="#" id="homeLink" class="menu-item active">ГЛАВНАЯ</a></li>
+            <li><a href="#" id="galleryLink" class="menu-item">ГАЛЕРЕЯ</a></li>
+        </ul>
+    </nav>
+
+    <!-- ОСНОВНОЙ ЭКРАН МАГАЗИНА (ГЛАВНАЯ СТРАНИЦА) -->
+    <div id="shopScreen" class="page-screen active">
+        <!-- Шапка сайта -->
+        <header class="site-header">
+            <img src="images/logo.png" alt="BUDAPEST BRAND LOGO" class="brand-logo-img">
+        </header>
+
+        <!-- ПЕРВЫЙ БЛОК (ОСНОВНОЙ ТОВАР) -->
+        <main class="container">
+            <section class="image-section">
+                <div class="image-hover-wrapper">
+                    <img src="images/houdie1.png" alt="BUDAPEST* 2010" class="product-img active">
+                    <img src="images/houdie2.png" alt="BUDAPEST* 2010" class="product-img">
+                </div>
+                <div class="slider-controls">
+                    <button class="arrow-btn" id="prevBtn">⟵</button>
+                    <button class="arrow-btn" id="nextBtn">⟶</button>
+                </div>
+            </section>
+
+            <section class="info-section">
+                <header>
+                    <span class="badge">LIMITED DROP</span>
+                    <h1 class="product-title">BUDAPEST* 2010</h1>
+                    <p class="price">5 990 РУБ</p>
+                </header>
+                <div class="description">
+                    <ul class="specs">
+                        <li><strong>Состав:</strong> 100% ПЛОТНЫЙ ХЛОПОК</li>
+                        <li><strong>Размеры:</strong> ONE SIZE</li>
+                    </ul>
+                </div>
+                <a href="https://t.me" target="_blank" class="buy-button">ЗАКАЗАТЬ В TELEGRAM</a>
+            </section>
+        </main>
+
+        <!-- ВТОРОЙ БЛОК (ШТАНЫ С ИНВЕРСИЕЙ, ЗАГОЛОВКОМ ??? И БЕЗ ЦЕНЫ) -->
+        <section class="container second-drop">
+            <div class="image-section">
+                <div class="image-hover-wrapper">
+                    <img src="images/pants.png" alt="???" class="product-img active">
+                </div>
             </div>
-            <div class="slider-controls">
-                <button class="arrow-btn" id="prevBtn">⟵</button>
-                <button class="arrow-btn" id="nextBtn">⟶</button>
+
+            <div class="info-section">
+                <header>
+                    <span class="badge">LIMITED DROP</span>
+                    <h1 class="product-title">???</h1>
+                    <!-- Цена полностью удалена отсюда -->
+                </header>
+                <div class="description">
+                    <ul class="specs">
+                        <li><strong>Состав:</strong> ???</li>
+                        <li><strong>Размеры:</strong> ???</li>
+                    </ul>
+                </div>
             </div>
         </section>
+    </div>
 
-        <!-- Правая часть: Инфо -->
-        <section class="info-section">
-            <header>
-                <span class="badge">LIMITED DROP</span>
-                <h1 class="product-title">BUDAPEST* 2010</h1>
-                <p class="price">5 990 РУБ</p>
-            </header>
-            <div class="description">
-                <ul class="specs">
-                    <li><strong>Состав:</strong> 100% ПЛОТНЫЙ ХЛОПОК</li>
-                    <li><strong>Размеры:</strong> ONE SIZE</li>
-                </ul>
-            </div>
-            <a href="https://t.me" target="_blank" class="buy-button">ЗАКАЗАТЬ В TELEGRAM</a>
-        </section>
-    </main>
-
-    <!-- ВТОРОЙ БЛОК (ШТАНЫ С ИНВЕРСИЕЙ И ЗАГОЛОВКОМ ???) -->
-    <section class="container second-drop">
-        <!-- Левая часть: Фото pants.png в обертке для инверсии -->
-        <div class="image-section">
-            <div class="image-hover-wrapper">
-                <img src="images/pants.png" alt="???" class="product-img active">
-            </div>
+    <!-- НОВЫЙ ОТДЕЛЬНЫЙ ЭКРАН ГАЛЕРЕИ (ПРОЦЕСС РАБОТЫ) -->
+    <div id="galleryScreen" class="page-screen">
+        <header class="site-header">
+            <h2 class="gallery-screen-title">ГАЛЕРЕЯ ПРОЦЕССА</h2>
+        </header>
+        
+        <!-- Сетка для 50 кадров (3 в ряд) -->
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Автоматически заполнится кадрами через JS скрипт снизу -->
         </div>
+    </div>
 
-        <!-- Правая часть: Текст без кнопки -->
-        <div class="info-section">
-            <header>
-                <span class="badge">LIMITED DROP</span>
-                <h1 class="product-title">???</h1>
-                <p class="price">5 990 РУБ</p>
-            </header>
-            <div class="description">
-                <ul class="specs">
-                    <li><strong>Состав:</strong> ???</li>
-                    <li><strong>Размеры:</strong> ???</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Скрипт слайдера (работает только для первого блока) -->
+    <!-- СКРИПТ УПРАВЛЕНИЯ ИНТЕРФЕЙСОМ -->
     <script>
-        const images = document.querySelectorAll('.image-hover-wrapper .product-img');
+        // Слайдер для худи
+        const images = document.querySelectorAll('.image-section .image-hover-wrapper .product-img');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         let currentIndex = 0;
 
-        function changeImage(index) {
-            images[currentIndex].classList.remove('active');
-            currentIndex = index;
-            if (currentIndex < 0) currentIndex = images.length - 1;
-            if (currentIndex >= images.length) currentIndex = 0;
-            images[currentIndex].classList.add('active');
+        if(prevBtn && nextBtn && images.length > 1) {
+            function changeImage(index) {
+                images[currentIndex].classList.remove('active');
+                currentIndex = index;
+                if (currentIndex < 0) currentIndex = images.length - 1;
+                if (currentIndex >= images.length) currentIndex = 0;
+                images[currentIndex].classList.add('active');
+            }
+            prevBtn.addEventListener('click', () => changeImage(currentIndex - 1));
+            nextBtn.addEventListener('click', () => changeImage(currentIndex + 1));
         }
 
-        prevBtn.addEventListener('click', () => changeImage(currentIndex - 1));
-        nextBtn.addEventListener('click', () => changeImage(currentIndex + 1));
+        // Логика открытия/закрытия бургер-меню
+        const menuToggle = document.getElementById('menuToggle');
+        const sideMenu = document.getElementById('sideMenu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('open');
+            sideMenu.classList.toggle('open');
+        });
+
+        // Переключение между Главным экраном и Галереей
+        const shopScreen = document.getElementById('shopScreen');
+        const galleryScreen = document.getElementById('galleryScreen');
+        const homeLink = document.getElementById('homeLink');
+        const galleryLink = document.getElementById('galleryLink');
+
+        function showScreen(screenToShow, activeLink) {
+            // Скрываем все экраны и убираем активный класс у ссылок
+            shopScreen.classList.remove('active');
+            galleryScreen.classList.remove('active');
+            homeLink.classList.remove('active');
+            galleryLink.classList.remove('active');
+
+            // Включаем нужный экран
+            screenToShow.classList.add('active');
+            activeLink.classList.add('active');
+
+            // Закрываем меню обратно с анимацией
+            menuToggle.classList.remove('open');
+            sideMenu.classList.remove('open');
+            
+            // Скроллим наверх страницы при переключении
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        homeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showScreen(shopScreen, homeLink);
+        });
+
+        galleryLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showScreen(galleryScreen, galleryLink);
+        });
+
+        // Генерация 50 кадров в сетку (от cadr1.png до cadr50.png) с эффектом инверсии
+        const galleryGrid = document.getElementById('galleryGrid');
+        for (let i = 1; i <= 50; i++) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'gallery-img-wrapper';
+
+            const img = document.createElement('img');
+            img.src = `images/cadr${i}.png`;
+            img.alt = `Кадр ${i}`;
+            img.className = 'gallery-photo';
+            
+            // Если картинка не найдена в репозитории на данный момент, она не ломает верстку
+            img.onerror = function() {
+                this.style.display = 'none';
+                wrapper.innerHTML = `<span style="color:#222; font-size:12px;">CADR${i}</span>`;
+            };
+
+            wrapper.appendChild(img);
+            galleryGrid.appendChild(wrapper);
+        }
     </script>
 </body>
 </html>
