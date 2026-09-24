@@ -8,49 +8,66 @@
 </head>
 <body>
 
-    <!-- Шапка сайта с картинкой логотипа сверху по центру -->
+    <!-- Шапка сайта -->
     <header class="site-header">
         <img src="images/logo.png" alt="BUDAPEST BRAND LOGO" class="brand-logo-img">
     </header>
 
+    <!-- ПЕРВЫЙ БЛОК (ОСНОВНОЙ ТОВАР) -->
     <main class="container">
-        <!-- Левая часть: Фотография кофты со стрелочками по центру -->
+        <!-- Левая часть: Слайдер -->
         <section class="image-section">
             <div class="image-hover-wrapper">
-                <!-- Первое фото (активно по умолчанию) -->
                 <img src="images/houdie1.png" alt="BUDAPEST* 2010" class="product-img active">
-                <!-- Второе фото -->
                 <img src="images/houdie2.png" alt="BUDAPEST* 2010" class="product-img">
             </div>
-            
-            <!-- Кнопки перелистывания выровнены строго по центру под фоткой -->
             <div class="slider-controls">
                 <button class="arrow-btn" id="prevBtn">⟵</button>
                 <button class="arrow-btn" id="nextBtn">⟶</button>
             </div>
         </section>
 
-        <!-- Правая часть: Название бренда, цена и кнопка покупки -->
+        <!-- Правая часть: Инфо -->
         <section class="info-section">
             <header>
                 <span class="badge">LIMITED DROP</span>
                 <h1 class="product-title">BUDAPEST* 2010</h1>
                 <p class="price">5 990 РУБ</p>
             </header>
-
             <div class="description">
                 <ul class="specs">
                     <li><strong>Состав:</strong> 100% ПЛОТНЫЙ ХЛОПОК</li>
                     <li><strong>Размеры:</strong> ONE SIZE</li>
                 </ul>
             </div>
-
-            <!-- Ссылка на твой Telegram -->
-            <a href="https://t.me/chocolateborodca" target="_blank" class="buy-button">ЗАКАЗАТЬ В TELEGRAM</a>
+            <a href="https://t.me" target="_blank" class="buy-button">ЗАКАЗАТЬ В TELEGRAM</a>
         </section>
     </main>
 
-    <!-- Скрипт переключения фото -->
+    <!-- ВТОРОЙ БЛОК (ЛЕНТА ВНИЗ БЕЗ КНОПКИ, С ЧЕРНЫМ КВАДРАТОМ И ???) -->
+    <section class="container second-drop">
+        <!-- Левая часть: Черный квадрат по центру вместо фото -->
+        <div class="black-void-wrapper">
+            <div class="black-square"></div>
+        </div>
+
+        <!-- Правая часть: Текст без кнопки -->
+        <div class="info-section">
+            <header>
+                <span class="badge">LIMITED DROP</span>
+                <h1 class="product-title">BUDAPEST* 2010</h1>
+                <p class="price">5 990 РУБ</p>
+            </header>
+            <div class="description">
+                <ul class="specs">
+                    <li><strong>Состав:</strong> ???</li>
+                    <li><strong>Размеры:</strong> ???</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Скрипт слайдера (работает только для первого блока) -->
     <script>
         const images = document.querySelectorAll('.image-hover-wrapper .product-img');
         const prevBtn = document.getElementById('prevBtn');
