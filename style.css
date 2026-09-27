@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. ОБЩИЕ НАСТРОЙКИ СТИЛЯ И БРУТАЛЬНЫЙ ШРИФТ
+   1. ОБЩИЕ НАСТРОЙКИ СТИЛЯ И ШРИФТ IMPACT ДЛЯ ВСЕГО САЙТА
    ========================================================================== */
 * {
     margin: 0;
@@ -7,10 +7,12 @@
     box-sizing: border-box;
     text-transform: uppercase;
     letter-spacing: 1px;
+    /* Принудительно ставим шрифт Impact для всей эстетики */
+    font-family: 'Impact', 'Arial Black', sans-serif;
 }
 
 body {
-    background-color: #000000; /* Чисто черный */
+    background-color: #000000;
     color: #ffffff;
     display: flex;
     flex-direction: column; 
@@ -21,7 +23,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Экраны страниц (скрыты по умолчанию, плавное появление) */
+/* Экраны страниц */
 .page-screen {
     display: none;
     width: 100%;
@@ -53,6 +55,13 @@ body {
     filter: brightness(100%) contrast(110%);
 }
 
+.screen-title {
+    font-size: 42px;
+    letter-spacing: 0px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 /* ==========================================================================
    2. КНОПКА МЕНЮ (ТРИ ЛИНИИ) И ВЫЕЗЖАЮЩАЯ ПАНЕЛЬ
    ========================================================================== */
@@ -68,7 +77,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    z-index: 1001; /* Поверх всего */
+    z-index: 1001;
 }
 
 .menu-toggle-btn .bar {
@@ -78,7 +87,7 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-/* Анимация превращения трех линий в крестик при открытии */
+/* Превращение в крестик (X) */
 .menu-toggle-btn.open .bar:nth-child(1) {
     transform: translateY(11px) rotate(45deg);
 }
@@ -91,11 +100,11 @@ body {
     transform: translateY(-11px) rotate(-45deg);
 }
 
-/* Боковое меню */
+/* Выезжающее боковое меню */
 .side-menu {
     position: fixed;
     top: 0;
-    left: -320px; /* Скрыто за экраном слева */
+    left: -320px; 
     width: 300px;
     height: 100vh;
     background-color: #050505;
@@ -106,7 +115,7 @@ body {
 }
 
 .side-menu.open {
-    left: 0; /* Выезжает на экран */
+    left: 0; 
 }
 
 .menu-list {
@@ -117,10 +126,9 @@ body {
 }
 
 .menu-item {
-    font-family: 'Impact', 'Arial Black', sans-serif;
-    font-size: 28px;
+    font-size: 32px;
     letter-spacing: 1px;
-    color: #555555;
+    color: #444444;
     text-decoration: none;
     transition: color 0.2s ease;
 }
@@ -130,7 +138,7 @@ body {
 }
 
 /* ==========================================================================
-   3. ГЛАВНЫЙ КОНТЕЙНЕР (СЕТКА ДЛЯ ТОВАРОВ)
+   3. СЕТКА ДЛЯ КАРТОЧЕК ТОВАРОВ (ГЛАВНАЯ)
    ========================================================================== */
 .container {
     display: grid;
@@ -142,7 +150,6 @@ body {
     margin-top: 10px;
 }
 
-/* Левая часть: Изображения */
 .image-section {
     width: 100%;
     display: flex;
@@ -153,14 +160,14 @@ body {
 .image-hover-wrapper {
     position: relative;
     width: 100%;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 3 / 4; 
     border: 1px solid #333; 
     overflow: hidden;
     filter: contrast(120%) grayscale(30%);
     transition: filter 0.3s ease-in-out;
 }
 
-/* Эффект НЕВЕДЕНИЯ МЫШКИ: чистый негатив */
+/* Эффект чистого негатива */
 .image-hover-wrapper:hover {
     filter: invert(100%) contrast(120%);
 }
@@ -176,7 +183,7 @@ body {
     display: block; 
 }
 
-/* Слайдер-кнопки */
+/* Стрелки слайдера */
 .slider-controls {
     display: flex;
     gap: 30px;
@@ -198,7 +205,7 @@ body {
     transform: scale(1.1);
 }
 
-/* Правая часть: Описание товара */
+/* Инфо-секция товара */
 .info-section {
     display: flex;
     flex-direction: column;
@@ -206,14 +213,12 @@ body {
 }
 
 .badge {
-    font-family: Arial, sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: 2px;
     color: #888;
 }
 
 .product-title {
-    font-family: 'Impact', 'Arial Black', sans-serif; 
     font-size: 64px; 
     font-weight: 900;
     letter-spacing: -2px; 
@@ -222,8 +227,7 @@ body {
 }
 
 .price {
-    font-family: Arial, sans-serif;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 300;
     color: #e0e0e0;
     margin-top: 10px;
@@ -235,19 +239,18 @@ body {
 }
 
 .specs li {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     color: #888;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .specs strong {
     color: #fff;
+    font-weight: normal;
 }
 
 /* Кнопка заказа */
 .buy-button {
-    font-family: Arial, sans-serif;
     display: inline-block;
     text-align: center;
     background-color: #ffffff;
@@ -256,7 +259,7 @@ body {
     padding: 18px;
     font-weight: 700;
     letter-spacing: 1px;
-    font-size: 14px;
+    font-size: 16px;
     border-radius: 2px;
     transition: background-color 0.2s ease, transform 0.1s ease;
 }
@@ -275,20 +278,26 @@ body {
 }
 
 /* ==========================================================================
-   4. ЭКРАН ГАЛЕРЕИ (СЕТКА 3 В РЯД, 1 НА 1)
+   4. СТИЛИ ДЛЯ СТРАНИЦЫ NEW DROP (ПОСТЕР)
    ========================================================================== */
-.gallery-screen-title {
-    font-family: 'Impact', 'Arial Black', sans-serif;
-    font-size: 42px;
-    letter-spacing: 0px;
-    text-align: center;
-    margin-bottom: 20px;
+.banner-container {
+    width: 100%;
+    max-width: 600px; /* Сужаем контейнер для эстетичных пропорций вертикального постера */
+    margin: 0 auto;
+    padding-top: 10px;
 }
 
+.banner-wrapper {
+    aspect-ratio: 2 / 3; /* Вертикальный формат постера */
+}
+
+/* ==========================================================================
+   5. СТИЛИ ДЛЯ СТРАНИЦЫ GALLERY (3 В РЯД, 1 НА 1)
+   ========================================================================== */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Ровно 3 колонки */
-    gap: 20px; /* Отступы между карточками */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
     width: 100%;
     margin-top: 20px;
 }
@@ -296,7 +305,7 @@ body {
 .gallery-img-wrapper {
     position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1; /* Жесткий формат квадрата 1 на 1 */
+    aspect-ratio: 1 / 1; 
     border: 1px solid #222;
     background-color: #050505;
     overflow: hidden;
@@ -306,7 +315,6 @@ body {
     transition: filter 0.3s ease-in-out, border-color 0.3s ease;
 }
 
-/* Негатив при наведении на фотку процесса в галерее */
 .gallery-img-wrapper:hover {
     filter: invert(100%) contrast(120%);
     border-color: #fff;
@@ -315,11 +323,11 @@ body {
 .gallery-photo {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Фото заполняет квадрат без деформаций */
+    object-fit: cover; 
 }
 
 /* ==========================================================================
-   5. АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ ЭКРАНЫ
+   6. АДАТАЦИЯ ПОД МОБИЛЬНЫЕ ЭКРАНЫ
    ========================================================================== */
 @media (max-width: 768px) {
     .menu-toggle-btn {
@@ -348,12 +356,16 @@ body {
         max-width: 210px; 
     }
 
-    /* Галерея на мобилках становится 2 в ряд, чтобы было крупнее */
     .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* 2 в ряд на мобилках */
         gap: 10px;
     }
-    .gallery-screen-title {
+
+    .screen-title {
         font-size: 28px;
+    }
+
+    .banner-container {
+        max-width: 100%;
     }
 }
