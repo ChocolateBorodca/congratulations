@@ -7,7 +7,6 @@
     box-sizing: border-box;
     text-transform: uppercase;
     letter-spacing: 1px;
-    /* Принудительно ставим шрифт Impact для всей эстетики */
     font-family: 'Impact', 'Arial Black', sans-serif;
 }
 
@@ -167,7 +166,6 @@ body {
     transition: filter 0.3s ease-in-out;
 }
 
-/* Эффект чистого негатива */
 .image-hover-wrapper:hover {
     filter: invert(100%) contrast(120%);
 }
@@ -183,7 +181,6 @@ body {
     display: block; 
 }
 
-/* Стрелки слайдера */
 .slider-controls {
     display: flex;
     gap: 30px;
@@ -205,7 +202,6 @@ body {
     transform: scale(1.1);
 }
 
-/* Инфо-секция товара */
 .info-section {
     display: flex;
     flex-direction: column;
@@ -249,7 +245,6 @@ body {
     font-weight: normal;
 }
 
-/* Кнопка заказа */
 .buy-button {
     display: inline-block;
     text-align: center;
@@ -282,17 +277,17 @@ body {
    ========================================================================== */
 .banner-container {
     width: 100%;
-    max-width: 600px; /* Сужаем контейнер для эстетичных пропорций вертикального постера */
+    max-width: 600px; 
     margin: 0 auto;
     padding-top: 10px;
 }
 
 .banner-wrapper {
-    aspect-ratio: 2 / 3; /* Вертикальный формат постера */
+    aspect-ratio: 2 / 3; 
 }
 
 /* ==========================================================================
-   5. СТИЛИ ДЛЯ СТРАНИЦЫ GALLERY (3 В РЯД, 1 НА 1)
+   5. СТИЛИ ДЛЯ СТРАНИЦЫ GALLERY
    ========================================================================== */
 .gallery-grid {
     display: grid;
@@ -327,7 +322,50 @@ body {
 }
 
 /* ==========================================================================
-   6. АДАТАЦИЯ ПОД МОБИЛЬНЫЕ ЭКРАНЫ
+   6. СТИЛИ ДЛЯ НОВОЙ СТРАНИЦЫ CONTACTS (БРУТАЛЬНЫЙ СПИСОК)
+   ========================================================================== */
+.contacts-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto 0 auto;
+}
+
+.contacts-links {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-bottom: 1px solid #222;
+    padding-bottom: 20px;
+}
+
+.contact-label {
+    font-size: 14px;
+    color: #555555;
+    letter-spacing: 2px;
+}
+
+.contact-link {
+    font-size: 32px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    display: inline-block;
+}
+
+/* Эффект легкого сдвига при наведении на ссылку контакта */
+.contact-link:hover {
+    color: #888888;
+    padding-left: 10px;
+}
+
+/* ==========================================================================
+   7. АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ ЭКРАНЫ
    ========================================================================== */
 @media (max-width: 768px) {
     .menu-toggle-btn {
@@ -357,7 +395,7 @@ body {
     }
 
     .gallery-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 в ряд на мобилках */
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
 
@@ -367,5 +405,9 @@ body {
 
     .banner-container {
         max-width: 100%;
+    }
+
+    .contact-link {
+        font-size: 24px;
     }
 }
