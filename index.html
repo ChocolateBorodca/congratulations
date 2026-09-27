@@ -15,12 +15,13 @@
         <span class="bar"></span>
     </button>
 
-    <!-- ВЫЕЗЖАЮЩАЯ ПАНЕЛЬ МЕНЮ (ВСЕ НА АНГЛИЙСКОМ) -->
+    <!-- ВЫЕЗЖАЮЩАЯ ПАНЕЛЬ МЕНЮ (НА АНГЛИЙСКОМ) -->
     <nav class="side-menu" id="sideMenu">
         <ul class="menu-list">
             <li><a href="#" id="homeLink" class="menu-item active">MAIN</a></li>
             <li><a href="#" id="newDropLink" class="menu-item">NEW DROP</a></li>
             <li><a href="#" id="galleryLink" class="menu-item">GALLERY</a></li>
+            <li><a href="#" id="contactsLink" class="menu-item">CONTACTS</a></li>
         </ul>
     </nav>
 
@@ -55,7 +56,7 @@
                         <li><strong>Размеры:</strong> ONE SIZE</li>
                     </ul>
                 </div>
-                <!-- Фикс ссылки: вернули твой юзернейм -->
+                <!-- Прямая точная ссылка на юзернейм -->
                 <a href="https://t.me" target="_blank" class="buy-button">ЗАКАЗАТЬ В TELEGRAM</a>
             </section>
         </main>
@@ -89,7 +90,6 @@
             <h2 class="screen-title">NEW DROP</h2>
         </header>
         <div class="banner-container">
-            <!-- Эффект инверсии при наведении сохранен и здесь -->
             <div class="image-hover-wrapper banner-wrapper">
                 <img src="images/drop_banner.png" alt="Autumn FW2027 Mini Drop" class="product-img active">
             </div>
@@ -106,7 +106,30 @@
         </div>
     </div>
 
-    <!-- СКРИПТ УПРАВЛЕНИЯ -->
+    <!-- ЭКРАН 4: ОТДЕЛЬНАЯ ВКЛАДКА СВЯЗИ (CONTACTS) -->
+    <div id="contactsScreen" class="page-screen">
+        <header class="site-header">
+            <h2 class="screen-title">CONTACTS</h2>
+        </header>
+        <div class="contacts-container">
+            <div class="contacts-links">
+                <div class="contact-item">
+                    <span class="contact-label">TELEGRAM INFOLINE</span>
+                    <a href="https://t.me" target="_blank" class="contact-link">@congratulationsex</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">TIKTOK DIRECT</span>
+                    <a href="https://tiktok.com" target="_blank" class="contact-link">@congratulationsbrand</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">INSTAGRAM</span>
+                    <a href="https://www.instagram.com/asklean?stkn=aXV0b2gzMzA2NTVt" target="_blank" class="contact-link">@asklean</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- СКРИПТ УПРАВЛЕНИЯ ИНТЕРФЕЙСОМ -->
     <script>
         // Слайдер изображений товара
         const images = document.querySelectorAll('#shopScreen .image-section .image-hover-wrapper .product-img');
@@ -135,11 +158,12 @@
             sideMenu.classList.toggle('open');
         });
 
-        // Навигация по экранам (Main, New Drop, Gallery)
+        // Навигация по 4 экранам (Main, New Drop, Gallery, Contacts)
         const screens = {
             main: { el: document.getElementById('shopScreen'), link: document.getElementById('homeLink') },
             newDrop: { el: document.getElementById('newDropScreen'), link: document.getElementById('newDropLink') },
-            gallery: { el: document.getElementById('galleryScreen'), link: document.getElementById('galleryLink') }
+            gallery: { el: document.getElementById('galleryScreen'), link: document.getElementById('galleryLink') },
+            contacts: { el: document.getElementById('contactsScreen'), link: document.getElementById('contactsLink') }
         };
 
         function switchScreen(targetKey) {
@@ -158,6 +182,7 @@
         screens.main.link.addEventListener('click', (e) => { e.preventDefault(); switchScreen('main'); });
         screens.newDrop.link.addEventListener('click', (e) => { e.preventDefault(); switchScreen('newDrop'); });
         screens.gallery.link.addEventListener('click', (e) => { e.preventDefault(); switchScreen('gallery'); });
+        screens.contacts.link.addEventListener('click', (e) => { e.preventDefault(); switchScreen('contacts'); });
 
         // Генерация сетки галереи (50 кадров)
         const galleryGrid = document.getElementById('galleryGrid');
