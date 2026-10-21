@@ -65,10 +65,10 @@
             <section class="image-section product-slider-block">
                 <div class="image-hover-wrapper">
                     <img src="images/pants.png" alt="Grand Budapest Pants" class="product-img active">
-                    <img src="images/pants2.png.jpg" alt="Grand Budapest Pants 2" class="product-img">
-                    <img src="images/pants3.png.jpg" alt="Grand Budapest Pants 3" class="product-img">
-                    <img src="images/pants4.png.jpg" alt="Grand Budapest Pants 4" class="product-img">
-                    <img src="images/pants5.png.jpg" alt="Grand Budapest Pants 5" class="product-img">
+                    <img src="images/pants2.png" alt="Grand Budapest Pants 2" class="product-img">
+                    <img src="images/pants3.png" alt="Grand Budapest Pants 3" class="product-img">
+                    <img src="images/pants4.png" alt="Grand Budapest Pants 4" class="product-img">
+                    <img src="images/pants5.png" alt="Grand Budapest Pants 5" class="product-img">
                 </div>
                 <div class="slider-controls">
                     <button class="arrow-btn prev-btn">⟵</button>
@@ -185,40 +185,27 @@
             contacts: { el: document.getElementById('contactsScreen'), link: document.getElementById('contactsLink') }
         };
 
-        function switchScreen(targetKey) {
-            Object.keys(screens).forEach(key => {
-                if (screens[key].el) screens[key].el.classList.remove('active');
-                if (screens[key].link) screens[key].link.classList.remove('active');
-            });
-            if (screens[targetKey].el) screens[targetKey].el.classList.add('active');
-            if (screens[targetKey].link) screens[targetKey].link.classList.add('active');
-            
-            if (menuToggle) menuToggle.classList.remove('open');
-            if (sideMenu) sideMenu.classList.remove('open');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        Object.keys(screens).forEach(key => {
+            const current = screens[key];
+            if (current.link && current.el) {
+                current.link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Закрываем меню при переходе
+                    menuToggle.classList.remove('open');
+                    sideMenu.classList.remove('open');
 
-        if (screens.main.link) screens.main.link.addEventListener('click', (e) => { e.preventDefault(); switchScreen('main'); });
-        if (screens.newDrop.link) screens.newDrop.link.addEventListener('click', (e) => { e.preventDefault(); switchScreen('newDrop'); });
-        if (screens.gallery.link) screens.gallery.link.addEventListener('click', (e) => { e.preventDefault(); switchScreen('gallery'); });
-        if (screens.contacts.link) screens.contacts.link.addEventListener('click', (e) => { e.preventDefault(); switchScreen('contacts'); });
+                    // Переключаем активные классы на ссылках и экранах
+                    Object.values(screens).forEach(s => {
+                        if (s.link) s.link.classList.remove('active');
+                        if (s.el) s.el.classList.remove('active');
+                    });
 
-        // Исправленная генерация сетки галереи (все кавычки на месте)
-        const galleryGrid = document.getElementById('galleryGrid');
-        if (galleryGrid) {
-            for (let i = 1; i <= 50; i++) {
-                const wrapper = document.createElement('div');
-                wrapper.className = 'gallery-img-wrapper';
-                
-const img = document.createElement('img');
-img.src = images/cadr${i}.png;
-img.alt = Cadr ${i};
-img.className = 'gallery-photo';
-img.onerror = function() {
-this.style.display = 'none';
-wrapper.innerHTML = <span style="color:#333; font-size:12px;">CADR${i}</span>;
-};
-wrapper.appendChild(img);
-galleryGrid.appendChild(wrapper);
-}
-}
+                    current.link.classList.add('active');
+                    current.el.classList.add('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
