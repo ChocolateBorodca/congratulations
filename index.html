@@ -56,19 +56,20 @@
                         <li><strong>Размеры:</strong> ONE SIZE</li>
                     </ul>
                 </div>
-                <a href="https://t.me" target="_blank" class="buy-button">ЗАКАЗАТЬ В TELEGRAM</a>
+                <a href="https://t.me/chocolateborodca" target="_blank" class="buy-button">ЗАКАЗАТЬ В TELEGRAM</a>
             </section>
         </main>
 
-        <!-- ВТОРОЙ ТОВАР (ШТАНЫ С ПОЛНЫМ СЛАЙДЕРОМ И КНОПКОЙ) -->
+        <!-- ВТОРОЙ ТОВАР (ШТАНЫ С ИСПРАВЛЕННЫМИ РАСШИРЕНИЯМИ ИЗ GITHUB) -->
         <section class="container second-drop">
             <section class="image-section product-slider-block">
                 <div class="image-hover-wrapper">
+                    <!-- Расширения файлов изменены под твои реальные файлы на GitHub -->
                     <img src="images/pants.png" alt="Grand Budapest Pants" class="product-img active">
-                    <img src="images/pants2.png" alt="Grand Budapest Pants 2" class="product-img">
-                    <img src="images/pants3.png" alt="Grand Budapest Pants 3" class="product-img">
-                    <img src="images/pants4.png" alt="Grand Budapest Pants 4" class="product-img">
-                    <img src="images/pants5.png" alt="Grand Budapest Pants 5" class="product-img">
+                    <img src="images/pants2.png.jpg" alt="Grand Budapest Pants 2" class="product-img">
+                    <img src="images/pants3.png.jpg" alt="Grand Budapest Pants 3" class="product-img">
+                    <img src="images/pants4.png.jpg" alt="Grand Budapest Pants 4" class="product-img">
+                    <img src="images/pants5.png.jpg" alt="Grand Budapest Pants 5" class="product-img">
                 </div>
                 <div class="slider-controls">
                     <button class="arrow-btn prev-btn">⟵</button>
@@ -88,7 +89,7 @@
                         <li><strong>Размеры:</strong> M,L,XL</li>
                     </ul>
                 </div>
-                <a href="https://t.me" target="_blank" class="buy-button">ЗАКАЗАТЬ В TELEGRAM</a>
+                <a href="https://t.me/chocolateborodca" target="_blank" class="buy-button">ЗАКАЗАТЬ В TELEGRAM</a>
             </div>
         </section>
     </div>
@@ -124,11 +125,11 @@
             <div class="contacts-links">
                 <div class="contact-item">
                     <span class="contact-label">TELEGRAM CHANNEL</span>
-                    <a href="https://t.me" target="_blank" class="contact-link">@congratulationsex</a>
+                    <a href="https://t.me/congratulationsex" target="_blank" class="contact-link">@congratulationsex</a>
                 </div>
                 <div class="contact-item">
                     <span class="contact-label">TIKTOK DIRECT</span>
-                    <a href="https://tiktok.com" target="_blank" class="contact-link">@congratulationsbrand</a>
+                    <a href="https://www.tiktok.com/@congratulationsbrand?_r=1&_t=ZS-9A5pDENUw6v" target="_blank" class="contact-link">@congratulationsbrand</a>
                 </div>
                 <div class="contact-item">
                     <span class="contact-label">INSTAGRAM</span>
@@ -140,7 +141,7 @@
 
     <!-- СКРИПТ УПРАВЛЕНИЯ ИНТЕРФЕЙСОМ -->
     <script>
-        // Инициализация мульти-слайдеров (для худи и для штанов отдельно)
+        // Безопасная инициализация слайдеров
         const sliderBlocks = document.querySelectorAll('.product-slider-block');
         
         sliderBlocks.forEach(block => {
@@ -161,8 +162,8 @@
                 prev.addEventListener('click', () => updateSlider(currentIdx - 1));
                 next.addEventListener('click', () => updateSlider(currentIdx + 1));
             } else if (slides.length <= 1 && prev && next) {
-                prev.style.display = 'none';
-                next.style.display = 'none';
+                prev.style.style.display = 'none';
+                next.style.style.display = 'none';
             }
         });
 
@@ -170,12 +171,14 @@
         const menuToggle = document.getElementById('menuToggle');
         const sideMenu = document.getElementById('sideMenu');
 
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('open');
-            sideMenu.classList.toggle('open');
-        });
+        if (menuToggle && sideMenu) {
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('open');
+                sideMenu.classList.toggle('open');
+            });
+        }
 
-        // Навигация по 4 экранам (Main, New Drop, Gallery, Contacts)
+        // Навигация по экранам
         const screens = {
             main: { el: document.getElementById('shopScreen'), link: document.getElementById('homeLink') },
             newDrop: { el: document.getElementById('newDropScreen'), link: document.getElementById('newDropLink') },
@@ -185,35 +188,37 @@
 
         function switchScreen(targetKey) {
             Object.keys(screens).forEach(key => {
-                screens[key].el.classList.remove('active');
-                screens[key].link.classList.remove('active');
+                if (screens[key].el) screens[key].el.classList.remove('active');
+                if (screens[key].link) screens[key].link.classList.remove('active');
             });
-            screens[targetKey].el.classList.add('active');
-            screens[targetKey].link.classList.add('active');
+            if (screens[targetKey].el) screens[targetKey].el.classList.add('active');
+            if (screens[targetKey].link) screens[targetKey].link.classList.add('active');
             
-            menuToggle.classList.remove('open');
-            sideMenu.classList.remove('open');
+            if (menuToggle) menuToggle.classList.remove('open');
+            if (sideMenu) sideMenu.classList.remove('open');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        screens.main.link.addEventListener('click', (e) => { e.preventDefault(); switchScreen('main'); });
-        screens.newDrop.link.addEventListener('click', (e) => { e.preventDefault(); switchScreen('newDrop'); });
-        screens.gallery.link.addEventListener('click', (e) => { e.preventDefault(); switchScreen('gallery'); });
-        screens.contacts.link.addEventListener('click', (e) => { e.preventDefault(); switchScreen('contacts'); });
+        if (screens.main.link) screens.main.link.addEventListener('click', (e) => { e.preventDefault(); switchScreen('main'); });
+        if (screens.newDrop.link) screens.newDrop.link.addEventListener('click', (e) => { e.preventDefault(); switchScreen('newDrop'); });
+        if (screens.gallery.link) screens.gallery.link.addEventListener('click', (e) => { e.preventDefault(); switchScreen('gallery'); });
+        if (screens.contacts.link) screens.contacts.link.addEventListener('click', (e) => { e.preventDefault(); switchScreen('contacts'); });
 
-        // Исправленная генерация сетки галереи (теперь кавычки на месте)
+        // Генерация сетки галереи
         const galleryGrid = document.getElementById('galleryGrid');
-        for (let i = 1; i <= 50; i++) {
-            const wrapper = document.createElement('div');
-            wrapper.className = 'gallery-img-wrapper';
-            const img = document.createElement('img');
-            img.src = `images/cadr${i}.png`;
-            img.alt = `Cadr ${i}`;
-            img.className = 'gallery-photo';
-            img.onerror = function() {
-                this.style.display = 'none';
-                wrapper.innerHTML = `<span style="color:#333; font-size:12px;">CADR${i}</span>`;
-            };
-wrapper.appendChild(img);
-galleryGrid.appendChild(wrapper);
-}
+        if (galleryGrid) {
+            for (let i = 1; i <= 50; i++) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'gallery-img-wrapper';
+const img = document.createElement('img');
+                img.src = images/cadr${i}.png;
+                img.alt = Cadr ${i};
+                img.className = 'gallery-photo';
+                img.onerror = function() {
+                    this.style.display = 'none';
+                    wrapper.innerHTML = <span style="color:#333; font-size:12px;">CADR${i}</span>;
+};
+            wrapper.appendChild(img);
+            galleryGrid.appendChild(wrapper);
+            }
+        }
