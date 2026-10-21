@@ -1,34 +1,33 @@
-// Скрипт для динамического заполнения галереи на сайте BUDAPEST* 2010
-// Поддерживает автоматическое добавление картинок от cadr1.png до cadr50.png
+// Полностью исправленный скрипт галереи для сайта BUDAPEST* 2010
+// Поддерживает динамическое появление файлов от cadr1.png до cadr50.png
 
 document.addEventListener("DOMContentLoaded", () => {
     const galleryGrid = document.getElementById('galleryGrid');
     
     if (galleryGrid) {
-        // Очищаем сетку от старых заглушек
+        // Очищаем сетку от любых старых элементов
         galleryGrid.innerHTML = '';
 
-        // Запускаем цикл до 50 для автоматического поиска новых фото на GitHub
+        // Цикл строго от 1 до 50
         for (let i = 1; i <= 50; i++) {
             const wrapper = document.createElement('div');
             wrapper.className = 'gallery-img-wrapper';
 
             const img = document.createElement('img');
-            img.src = `images/cadr${i}.png`;
             img.alt = `BUDAPEST Gallery Image ${i}`;
             img.className = 'gallery-photo';
             
-            // Если картинка успешно загрузилась, добавляем её на сайт
-            img.onload = function() {
-                galleryGrid.appendChild(wrapper);
-            };
-
-            // Если файла в папке images еще нет, просто игнорируем его
+            // Если картинки с таким номером нет на GitHub, полностью удаляем блок из сетки
             img.onerror = function() {
                 wrapper.remove();
             };
 
+            // Сначала вставляем картинку в обертку, а обертку в сетку
             wrapper.appendChild(img);
+            galleryGrid.appendChild(wrapper);
+
+            // И только после добавления в DOM запускаем скачивание картинки
+            img.src = `images/cadr${i}.png`;
         }
     }
 });
